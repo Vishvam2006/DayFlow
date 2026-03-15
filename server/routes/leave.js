@@ -1,0 +1,17 @@
+import express from "express";
+import authMiddleware from "../middleware/authMiddleware.js";
+import {
+  allLeaveRequests,
+  applyLeave,
+  showLeave,
+  updateLeaveStatus,
+} from "../controller/leaveController.js";
+
+const router = express.Router();
+
+router.post("/apply", authMiddleware, applyLeave);
+router.get("/showLeave", authMiddleware, showLeave);
+router.get("/leave-requests", authMiddleware, allLeaveRequests);
+router.put("/update-status/:id", authMiddleware, updateLeaveStatus);
+
+export default router;
