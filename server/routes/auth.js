@@ -12,6 +12,9 @@ const router = express.Router();
 router.post("/login", login);
 router.post("/login/send-otp", sendOtpLogin);
 router.post("/login/verify-otp", verifyOtpLogin);
+router.get("/ping", (req, res) => {
+  res.status(200).send("OK");
+});
 
 router.get("/verify", authMiddleware, verify);
 

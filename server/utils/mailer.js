@@ -8,15 +8,15 @@ const transporter = nodemailer.createTransport({
   port: 587,
   secure: false,
   auth: {
-    user: process.env.BREVO_SMTP_MAIL,  // ✅ fixed
-    pass: process.env.BREVO_SMTP_PASS,  // ✅ fixed
+    user: process.env.BREVO_SMTP_MAIL, 
+    pass: process.env.BREVO_SMTP_PASS, 
   },
 });
 
 export const sendOTP = async (email, otp) => {
   try {
     const info = await transporter.sendMail({
-      from: `"DayFlow" <${process.env.BREVO_SMTP_MAIL}>`, // IMPORTANT
+      from: `"DayFlow" <${process.env.BREVO_SMTP_MAIL}>`,
       to: email,
       subject: "Login OTP",
       text: `Your OTP is ${otp}`,
